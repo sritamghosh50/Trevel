@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourTies Adventures - Explore the World</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-top: -30px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--accent);
+        }
+        
+        .featured-section {
+            padding: 80px 0;
+            background-color: lightcyan;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: -10px;
+            left: 15%;
+            border-radius: 2px;
+        }
+        
+        .slider-container {
+            position: relative;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            padding: 0 15px;
+        }
+        
+        .destination-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .destination-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .card-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #777;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .card-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .card-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .card-btn:first-child {
+            margin-left: 0;
+        }
+        
+        .card-btn:last-child {
+            margin-right: 0;
+        }
+        
+        .card-btn:hover {
+            background: var(--dark);
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+        
+        .monthly-trips {
+            padding: 60px 0;
+            background: #f0f4f8;
+            margin-top: -90px;
+        }
+        
+        .month-selector-container {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .month-selector {
+            display: inline-flex;
+            justify-content: flex-start;
+            min-width: max-content;
+            padding: 0 10px;
+        }
+        
+        .month-btn {
+            padding: 8px 20px;
+            margin: 0 5px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .month-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .month-btn:hover:not(.active) {
+            background: #f0f0f0;
+        }
+        
+        .trip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .trip-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .trip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .trip-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .trip-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .trip-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .trip-content {
+            padding: 20px;
+        }
+        
+        .trip-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .trip-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .trip-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .trip-desc {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .trip-contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .trip-contact i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .trip-buttons {
+            display: flex;
+        }
+        
+        .trip-btn {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            font-size: 0.9rem;
+        }
+        
+        .trip-btn:first-child {
+            margin-left: 0;
+        }
+        
+        .trip-btn:last-child {
+            margin-right: 0;
+        }
+        
+        .trip-btn:hover {
+            background: var(--dark);
+        }
+        
+        .view-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.5rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: var(--primary);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .payment-method.active {
+            border-color: var(--primary);
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        /* Trip Details Modal */
+        .trip-details-modal .modal-content {
+            max-width: 900px;
+        }
+        
+        .trip-details-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .trip-details-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .trip-details-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+        
+        .trip-details-body {
+            padding: 30px;
+        }
+        
+        .trip-details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .trip-highlights {
+            margin: 20px 0;
+        }
+        
+        .trip-highlights h4 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-item i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .trip-itinerary {
+            margin: 30px 0;
+        }
+        
+        .itinerary-day {
+            margin-bottom: 20px;
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+        
+        .itinerary-day h5 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .trip-sidebar {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .trip-info-box {
+            margin-bottom: 25px;
+        }
+        
+        .trip-info-box h4 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .info-label {
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .info-value {
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        /* New styles for trip details actions */
+        .trip-details-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .trip-details-actions .btn {
+            flex: 1;
+        }
+        
+        .trip-details-actions .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .trip-details-actions .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--dark), #34495e);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            padding: 15px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #c0392b;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 50px;
+            }
+            
+            .trip-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .month-selector {
+                padding: 0 5px;
+            }
+            
+            .month-btn {
+                padding: 8px 15px;
+                margin: 0 3px;
+                font-size: 0.9rem;
+            }
+            
+            .trip-details-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Destinations</h2>
+            </div>
+            
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    <div class="slide">
+                        <div class="destination-card">
+                            <div class="card-img">
+                                <img src="image/user20200706162001273.jpg" alt="pandava bakhara">
+                            </div>
+                            <div class="card-content">
+                                <h3>pandava bakhara</h3>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> June 15-18, 2025</span>
+                                    <span class="price">₹599</span>
+                                </div>
+                                <p>Experience the iconic white-washed buildings and stunning sunsets of this Greek island paradise.</p>
+                                <div class="card-buttons">
+                                    <button class="card-btn view-details-btn" data-id="6">View Details</button>
+                                    <button class="card-btn book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="destination-card">
+                            <div class="card-img">
+                                <img src="image/Famous-Ancient-Temples-in-Puri.jpg" alt="Jagannath Temple">
+                            </div>
+                            <div class="card-content">
+                                <h3>Jagannath Temple</h3>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> April 5-8, 2025</span>
+                                    <span class="price">₹1,399</span>
+                                </div>
+                                <p>Immerse yourself in traditional Japanese culture during cherry blossom season.</p>
+                                <div class="card-buttons">
+                                    <button class="card-btn view-details-btn" data-id="5">View Details</button>
+                                    <button class="card-btn book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="destination-card">
+                            <div class="card-img">
+                                <img src="image/Deomali.jpg" alt="Deomali">
+                            </div>
+                            <div class="card-content">
+                                <h3>Deomali</h3>
+                                <div class="card-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> September 10-13, 2025</span>
+                                    <span class="price">₹3,499</span>
+                                </div>
+                                <p>Hike the Inca Trail to this ancient wonder of the world with our expert guides.</p>
+                                <div class="card-buttons">
+                                    <button class="card-btn view-details-btn" data-id="4">View Details</button>
+                                    <button class="card-btn book-now-btn">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="monthly-trips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Trips</h2>
+            </div>
+            
+            <div class="month-selector-container">
+                <div class="month-selector">
+                    <button class="month-btn active" data-month="all">All Trips</button>
+                    <button class="month-btn" data-month="january">January</button>
+                    <button class="month-btn" data-month="february">February</button>
+                    <button class="month-btn" data-month="march">March</button>
+                    <button class="month-btn" data-month="april">April</button>
+                    <button class="month-btn" data-month="may">May</button>
+                    <button class="month-btn" data-month="june">June</button>
+                    <button class="month-btn" data-month="july">July</button>
+                    <button class="month-btn" data-month="august">August</button>
+                    <button class="month-btn" data-month="september">September</button>
+                    <button class="month-btn" data-month="october">October</button>
+                    <button class="month-btn" data-month="november">November</button>
+                    <button class="month-btn" data-month="december">December</button>
+                </div>
+            </div>
+            
+            <div class="trip-grid" id="tripContainer">
+                <!-- Trips will be loaded here dynamically -->
+            </div>
+            
+            <div class="view-more">
+                <a href="#" class="btn" id="viewAllTrips">View All Trips</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter to receive exclusive deals, travel tips, and updates on our latest adventures.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TourTies</h3>
+                    <p>Making travel dreams come true since 2025. We specialize in creating unforgettable experiences around the globe.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Booking Guide</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel St, Adventure City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@wanderlust.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 TourTies Adventures. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Your Adventure</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="zip">ZIP Code</label>
+                            <input type="text" id="zip" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passengers">Number of Passengers</label>
+                            <input type="number" id="passengers" class="form-control" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="payment-methods">
+                            <div class="payment-method active">
+                                <i class="fab fa-cc-visa"></i>
+                                <p>Credit Card</p>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fab fa-cc-paypal"></i>
+                                <p>PayPal</p>
+                            </div>
+                            <div class="payment-method">
+                                <i class="fas fa-university"></i>
+                                <p>Bank Transfer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date</label>
+                            <input type="text" id="expiry" class="form-control" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="123" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests</label>
+                        <textarea id="specialRequests" class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelBooking">Cancel</button>
+                <button class="btn" id="confirmBooking">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Trip Details Modal -->
+    <div class="modal trip-details-modal" id="tripDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header trip-details-header">
+                <img src="" alt="" id="tripDetailImage">
+                <div class="trip-details-title">
+                    <h3 id="tripDetailTitle"></h3>
+                    <div class="trip-price" id="tripDetailPrice"></div>
+                </div>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body trip-details-body">
+                <div class="trip-details-grid">
+                    <div class="trip-main-content">
+                        <h4>About This Trip</h4>
+                        <p id="tripDetailDescription"></p>
+                        
+                        <div class="trip-highlights">
+                            <h4>Trip Highlights</h4>
+                            <div id="tripHighlights"></div>
+                        </div>
+                        
+                        <div class="trip-itinerary">
+                            <h4>Itinerary</h4>
+                            <div id="tripItinerary"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="trip-sidebar">
+                        <div class="trip-info-box">
+                            <h4>Trip Details</h4>
+                            <div class="info-item">
+                                <span class="info-label">Duration:</span>
+                                <span class="info-value" id="tripDuration"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Difficulty:</span>
+                                <span class="info-value" id="tripDifficulty"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Group Size:</span>
+                                <span class="info-value" id="tripGroupSize"></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Availability:</span>
+                                <span class="info-value" id="tripAvailability"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="trip-info-box">
+                            <h4>What's Included</h4>
+                            <div id="tripInclusions"></div>
+                        </div>
+                        
+                        <div class="trip-info-box">
+                            <h4>What to Bring</h4>
+                            <div id="tripRequirements"></div>
+                        </div>
+                        
+                        <div class="trip-details-actions">
+                            <button class="btn btn-outline" id="interestedBtn" style="width: 50%;">I'm Interested</button>
+                            <button class="btn" id="bookThisTrip">Book This Trip</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Trip data - in a real app this would come from a database
+        const tripsData = [
+            // January Trips
+            {
+                id: 1,
+                title: "chilika lake",
+                image: "image/lake-chilika.jpg",
+                date: "Jan 5-8, 2025",
+                month: "january",
+                location: "Odisha, India",
+                spotsLeft: 12,
+                price: "₹3,699",
+                description: "Explore the lush jungles, pristine beaches, and vibrant culture of Bali with our local guides.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "4 days",
+                difficulty: "Moderate",
+                groupSize: "Max 15 people",
+                availability: "5 spots left",
+                highlights: [
+                    "Visit ancient temples and rice terraces",
+                    "Snorkel in crystal clear waters",
+                    "Experience traditional Balinese dance",
+                    "Sunset at Uluwatu Temple"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Denpasar, transfer to Ubud, welcome dinner"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Sacred Monkey Forest, Tegalalang Rice Terraces, traditional dance performance"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Mount Batur sunrise trek, hot springs visit"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Trip to Nusa Penida island for snorkeling and beach exploration"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Free day for optional activities or relaxation"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Water temple visit, Balinese cooking class"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Departure transfer"
+                    }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "All transportation",
+                    "Professional guide",
+                    "Most meals",
+                    "Entrance fees"
+                ],
+                requirements: [
+                    "Passport with 6+ months validity",
+                    "Comfortable walking shoes",
+                    "Swimwear",
+                    "Sun protection",
+                    "Light rain jacket"
+                ]
+            },
+            {
+                id: 2,
+                title: "hirakud dam",
+                image: "image/1589532761_hirakud_dam.avif",
+                date: "Jan 15-18, 2025",
+                month: "january",
+                location: "Odisha, India",
+                spotsLeft: 8,
+                price: "₹3,199",
+                description: "Relax in overwater bungalows and snorkel in crystal clear waters teeming with marine life.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "4 days",
+                difficulty: "Easy",
+                groupSize: "Max 10 people",
+                availability: "3 spots left",
+                highlights: [
+                    "Stay in luxury overwater bungalow",
+                    "Snorkel with manta rays",
+                    "Sunset dolphin cruise",
+                    "Private sandbank picnic"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Male, speedboat transfer to resort"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Relaxation day, optional spa treatments"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Snorkeling excursion to coral gardens"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Sunset dolphin cruise"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Private sandbank picnic and snorkeling"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Free day for optional activities"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Departure transfer"
+                    }
+                ],
+                inclusions: [
+                    "6 nights in overwater bungalow",
+                    "All meals and non-alcoholic drinks",
+                    "Snorkeling equipment",
+                    "Dolphin cruise",
+                    "Airport transfers"
+                ],
+                requirements: [
+                    "Passport with 6+ months validity",
+                    "Swimwear",
+                    "Reef-safe sunscreen",
+                    "Underwater camera",
+                    "Light clothing"
+                ]
+            },
+            {
+                id: 3,
+                title: "Chandipur sea beach",
+                image: "image/1585309141_Chandipur_sea_beach_Baleswar.avif",
+                date: "Jan 20-22, 2025",
+                month: "january",
+                location: "Odisha, India",
+                spotsLeft: 15,
+                price: "₹1,999",
+                description: "Experience the romance of Paris with visits to the Eiffel Tower, Louvre, and charming cafes.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "3 days",
+                difficulty: "Easy",
+                groupSize: "Max 20 people",
+                availability: "10 spots left",
+                highlights: [
+                    "Eiffel Tower summit access",
+                    "Louvre Museum guided tour",
+                    "Seine River cruise",
+                    "Montmartre walking tour"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Paris, welcome dinner"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Eiffel Tower visit, Seine River cruise"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Louvre Museum guided tour, free afternoon"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Day trip to Versailles"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Montmartre walking tour, Sacré-Cœur visit"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Free day for shopping and exploration"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Departure transfer"
+                    }
+                ],
+                inclusions: [
+                    "6 nights in 4-star hotel",
+                    "Daily breakfast",
+                    "All entrance fees",
+                    "Professional guide",
+                    "Transportation pass"
+                ],
+                requirements: [
+                    "Comfortable walking shoes",
+                    "Weather-appropriate clothing",
+                    "Camera",
+                    "Adapter for European outlets",
+                    "Passport"
+                ]
+            },
+            // February Trips
+            {
+                id: 4,
+                title: "Deomali",
+                image: "image/Deomali.jpg",
+                date: "Feb 10-13, 2025",
+                month: "february",
+                location: "Odisha, India",
+                spotsLeft: 6,
+                price: "₹3,499",
+                description: "Hike the Inca Trail to this ancient wonder of the world with our expert guides.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "4 days",
+                difficulty: "Challenging",
+                groupSize: "Max 12 people",
+                availability: "4 spots left",
+                highlights: [
+                    "4-day Inca Trail hike",
+                    "Sunrise at Machu Picchu",
+                    "Sacred Valley exploration",
+                    "Cusco city tour"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Lima"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Flight to Cusco, acclimatization day"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Sacred Valley tour"
+                    },
+                    {
+                        day: "Day 4-7",
+                        activities: "Inca Trail hike"
+                    },
+                    {
+                        day: "Day 8",
+                        activities: "Machu Picchu exploration"
+                    },
+                    {
+                        day: "Day 9",
+                        activities: "Return to Cusco, free time"
+                    },
+                    {
+                        day: "Day 10",
+                        activities: "Departure"
+                    }
+                ],
+                inclusions: [
+                    "All accommodations",
+                    "Professional guide and porters",
+                    "All meals during hike",
+                    "Entrance fees",
+                    "Transportation"
+                ],
+                requirements: [
+                    "Good physical condition",
+                    "Hiking boots",
+                    "Daypack",
+                    "Layered clothing",
+                    "Passport"
+                ]
+            },
+            {
+                id: 5,
+                title: "Jagannath Temple",
+                image: "image/Famous-Ancient-Temples-in-Puri.jpg",
+                date: "Feb 25 - Mar 27, 2025",
+                month: "february",
+                location: "Odisha, India",
+                spotsLeft: 10,
+                price: "₹1,399",
+                description: "Immerse yourself in traditional Japanese culture with visits to ancient temples and tea houses.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "3 days",
+                difficulty: "Moderate",
+                groupSize: "Max 15 people",
+                availability: "7 spots left",
+                highlights: [
+                    "Fushimi Inari Shrine",
+                    "Tea ceremony experience",
+                    "Bamboo forest walk",
+                    "Traditional kaiseki dinner"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Kyoto"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Fushimi Inari Shrine, Gion district walk"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Arashiyama bamboo forest, monkey park"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Day trip to Nara"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Tea ceremony, free afternoon"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Philosopher's Path, temple visits"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Free day for exploration"
+                    },
+                    {
+                        day: "Day 8",
+                        activities: "Departure"
+                    }
+                ],
+                inclusions: [
+                    "7 nights accommodation",
+                    "Daily breakfast",
+                    "Tea ceremony",
+                    "Transportation pass",
+                    "Guided tours"
+                ],
+                requirements: [
+                    "Comfortable walking shoes",
+                    "Modest clothing for temples",
+                    "Passport",
+                    "Japanese phrasebook",
+                    "Adapter for outlets"
+                ]
+            },
+            {
+                id: 6,
+                title: "pandava bakhara",
+                image: "image/user20200706162001273.jpg",
+                date: "Feb 15, 2025",
+                month: "february",
+                location: "Odisha, India",
+                spotsLeft: 5,
+                price: "₹599",
+                description: "Experience the iconic white-washed buildings and stunning sunsets of this Greek island paradise.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "1 days",
+                difficulty: "Easy",
+                groupSize: "Max 12 people",
+                availability: "3 spots left",
+                highlights: [
+                    "Oia sunset experience",
+                    "Caldera boat tour",
+                    "Wine tasting",
+                    "Ancient Akrotiri ruins"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Santorini"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Fira walking tour, cable car ride"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Caldera boat tour with hot springs"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Ancient Akrotiri ruins, red beach"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Wine tasting tour"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Free day, sunset in Oia"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Departure"
+                    }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "Daily breakfast",
+                    "Boat tour",
+                    "Wine tasting",
+                    "Transportation"
+                ],
+                requirements: [
+                    "Comfortable walking shoes",
+                    "Swimwear",
+                    "Sun protection",
+                    "Camera",
+                    "Passport"
+                ]
+            },
+            // March Trips
+            {
+                id: 7,
+                title: "Dhauli Shanti Stupa",
+                image: "image/1585309265_Dhauli_Shanti_Stupa__Bhubaneswar.avif",
+                date: "Mar 5, 2025",
+                month: "march",
+                location: "Odisha, India",
+                spotsLeft: 8,
+                price: "₹499",
+                description: "Explore the stunning landscapes of New Zealand's South Island on this active adventure.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "1 days",
+                difficulty: "Moderate",
+                groupSize: "Max 12 people",
+                availability: "5 spots left",
+                highlights: [
+                    "Milford Sound cruise",
+                    "Queenstown adventure activities",
+                    "Franz Josef Glacier hike",
+                    "Lake Tekapo stargazing"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Christchurch"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Drive to Lake Tekapo, stargazing"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Mount Cook National Park hike"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Drive to Queenstown"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Free day for adventure activities"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Drive to Wanaka"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Franz Josef Glacier hike"
+                    },
+                    {
+                        day: "Day 8",
+                        activities: "Drive to Milford Sound"
+                    },
+                    {
+                        day: "Day 9",
+                        activities: "Milford Sound cruise"
+                    },
+                    {
+                        day: "Day 10",
+                        activities: "Departure from Queenstown"
+                    }
+                ],
+                inclusions: [
+                    "9 nights accommodation",
+                    "Transportation",
+                    "Milford Sound cruise",
+                    "Glacier hike",
+                    "Breakfast daily"
+                ],
+                requirements: [
+                    "Hiking shoes",
+                    "Layered clothing",
+                    "Waterproof jacket",
+                    "Passport",
+                    "Adapter for outlets"
+                ]
+            },
+            {
+                id: 8,
+                title: "konark Temple",
+                image: "image/1585308164_konark.avif",
+                date: "Mar 12-13, 2025",
+                month: "march",
+                location: "Odisha, India",
+                spotsLeft: 10,
+                price: "₹1,699",
+                description: "Discover the incredible biodiversity of Costa Rica's rainforests and beaches.",
+                phone: "+91 7751038603",
+                email: "ToutTies@gmail.com",
+                duration: "2 days",
+                difficulty: "Moderate",
+                groupSize: "Max 14 people",
+                availability: "6 spots left",
+                highlights: [
+                    "Manuel Antonio National Park",
+                    "Arenal Volcano",
+                    "Monteverde Cloud Forest",
+                    "Wildlife spotting"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in San José"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Travel to Arenal Volcano"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Hanging bridges tour, hot springs"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Travel to Monteverde"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Cloud forest guided hike"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Travel to Manuel Antonio"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Beach day, departure"
+                    }
+                ],
+                inclusions: [
+                    "6 nights accommodation",
+                    "Transportation",
+                    "Guided hikes",
+                    "Breakfast daily",
+                    "Entrance fees"
+                ],
+                requirements: [
+                    "Hiking shoes",
+                    "Rain jacket",
+                    "Binoculars",
+                    "Insect repellent",
+                    "Passport"
+                ]
+            },
+            {
+                id: 9,
+                title: "keonjhar",
+                image: "image/1589533067_keonjhar.avif",
+                date: "Mar 20-22, 2025",
+                month: "march",
+                location: "Odisha, India",
+                spotsLeft: 12,
+                price: "₹3,049",
+                description: "Journey through Morocco's imperial cities, Sahara Desert, and Atlas Mountains.",
+                phone: "+91 7751038603",
+                email: "TourTies@gmail.com",
+                duration: "3 days",
+                difficulty: "Moderate",
+                groupSize: "Max 16 people",
+                availability: "8 spots left",
+                highlights: [
+                    "Sahara Desert camel trek",
+                    "Fes medina exploration",
+                    "Atlas Mountains hike",
+                    "Marrakech souks"
+                ],
+                itinerary: [
+                    {
+                        day: "Day 1",
+                        activities: "Arrival in Casablanca"
+                    },
+                    {
+                        day: "Day 2",
+                        activities: "Travel to Fes"
+                    },
+                    {
+                        day: "Day 3",
+                        activities: "Fes medina guided tour"
+                    },
+                    {
+                        day: "Day 4",
+                        activities: "Travel to Merzouga, camel trek"
+                    },
+                    {
+                        day: "Day 5",
+                        activities: "Sahara Desert experience"
+                    },
+                    {
+                        day: "Day 6",
+                        activities: "Travel to Todra Gorge"
+                    },
+                    {
+                        day: "Day 7",
+                        activities: "Atlas Mountains hike"
+                    },
+                    {
+                        day: "Day 8",
+                        activities: "Travel to Marrakech"
+                    },
+                    {
+                        day: "Day 9",
+                        activities: "Marrakech exploration"
+                    },
+                    {
+                        day: "Day 10",
+                        activities: "Departure"
+                    }
+                ],
+                inclusions: [
+                    "9 nights accommodation",
+                    "Transportation",
+                    "Guided tours",
+                    "Most meals",
+                    "Camel trek"
+                ],
+                requirements: [
+                    "Modest clothing",
+                    "Comfortable walking shoes",
+                    "Head covering",
+                    "Sunscreen",
+                    "Passport"
+                ]
+            }
+        ];
+
+        // Function to render trips based on selected month
+        function renderTrips(month) {
+            const tripContainer = document.getElementById('tripContainer');
+            tripContainer.innerHTML = '';
+            
+            let filteredTrips = tripsData;
+            if (month !== 'all') {
+                filteredTrips = tripsData.filter(trip => trip.month === month);
+            }
+            
+            // Limit to 6 trips unless "View All" is clicked
+            const displayTrips = showAllTrips ? filteredTrips : filteredTrips.slice(0, 6);
+            
+            if (displayTrips.length === 0) {
+                tripContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No trips found for this month. Please check back later!</p>';
+                return;
+            }
+            
+            displayTrips.forEach(trip => {
+                const tripCard = document.createElement('div');
+                tripCard.className = 'trip-card';
+                tripCard.innerHTML = `
+                    <div class="trip-img">
+                        <img src="${trip.image}" alt="${trip.title}">
+                        <div class="trip-date">${trip.date}</div>
+                    </div>
+                    <div class="trip-content">
+                        <h3>${trip.title}</h3>
+                        <div class="trip-meta">
+                            <span><i class="fas fa-users"></i> ${trip.spotsLeft} spots left</span>
+                            <span><i class="fas fa-map-marker-alt"></i> ${trip.location}</span>
+                        </div>
+                        <div class="trip-price">${trip.price}</div>
+                        <div class="trip-desc">${trip.description}</div>
+                        <div class="trip-contact">
+                            <i class="fas fa-phone"></i> ${trip.phone}
+                        </div>
+                        <div class="trip-contact">
+                            <i class="fas fa-envelope"></i> ${trip.email}
+                        </div>
+                        <div class="trip-buttons">
+                            <button class="trip-btn view-details-btn" data-id="${trip.id}">View Details</button>
+                            <button class="trip-btn book-now-btn" data-id="${trip.id}">Book Now</button>
+                        </div>
+                    </div>
+                `;
+                tripContainer.appendChild(tripCard);
+            });
+            
+            // Add event listeners to the new buttons
+            addTripButtonEventListeners();
+        }
+        
+        // Track if "View All" is active
+        let showAllTrips = false;
+        let currentMonth = 'all';
+        
+        // Initialize the page with all trips
+        renderTrips('all');
+        
+        // Month selector functionality
+        const monthBtns = document.querySelectorAll('.month-btn');
+        
+        monthBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                monthBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentMonth = btn.dataset.month;
+                showAllTrips = false;
+                renderTrips(currentMonth);
+            });
+        });
+        
+        // View All Trips button
+        document.getElementById('viewAllTrips').addEventListener('click', (e) => {
+            e.preventDefault();
+            showAllTrips = true;
+            renderTrips(currentMonth);
+        });
+        
+        // Function to add event listeners to trip buttons
+        function addTripButtonEventListeners() {
+            // View Details buttons
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tripId = parseInt(btn.dataset.id);
+                    const trip = tripsData.find(t => t.id === tripId);
+                    showTripDetails(trip);
+                });
+            });
+            
+            // Book Now buttons
+            document.querySelectorAll('.book-now-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openBookingModal();
+                });
+            });
+        }
+        
+        // Show trip details modal
+        function showTripDetails(trip) {
+            const modal = document.getElementById('tripDetailsModal');
+            const highlightsList = trip.highlights.map(h => `
+                <div class="highlight-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${h}</span>
+                </div>
+            `).join('');
+            
+            const itineraryList = trip.itinerary.map(i => `
+                <div class="itinerary-day">
+                    <h5>${i.day}</h5>
+                    <p>${i.activities}</p>
+                </div>
+            `).join('');
+            
+            const inclusionsList = trip.inclusions.map(i => `
+                <div class="highlight-item">
+                    <i class="fas fa-check"></i>
+                    <span>${i}</span>
+                </div>
+            `).join('');
+            
+            const requirementsList = trip.requirements.map(r => `
+                <div class="highlight-item">
+                    <i class="fas fa-check"></i>
+                    <span>${r}</span>
+                </div>
+            `).join('');
+            
+            // Set modal content
+            document.getElementById('tripDetailImage').src = trip.image;
+            document.getElementById('tripDetailImage').alt = trip.title;
+            document.getElementById('tripDetailTitle').textContent = trip.title;
+            document.getElementById('tripDetailPrice').textContent = trip.price;
+            document.getElementById('tripDetailDescription').textContent = trip.description;
+            document.getElementById('tripHighlights').innerHTML = highlightsList;
+            document.getElementById('tripItinerary').innerHTML = itineraryList;
+            document.getElementById('tripDuration').textContent = trip.duration;
+            document.getElementById('tripDifficulty').textContent = trip.difficulty;
+            document.getElementById('tripGroupSize').textContent = trip.groupSize;
+            document.getElementById('tripAvailability').textContent = trip.availability;
+            document.getElementById('tripInclusions').innerHTML = inclusionsList;
+            document.getElementById('tripRequirements').innerHTML = requirementsList;
+            
+            // Add event listener to the Book This Trip button in the modal
+            document.getElementById('bookThisTrip').addEventListener('click', () => {
+                modal.style.display = 'none';
+                openBookingModal();
+            });
+
+            // Add event listener to the Interested button in the modal
+            document.getElementById('interestedBtn').addEventListener('click', function() {
+                this.textContent = "Interested!";
+                this.style.backgroundColor = '#2ecc71';
+                this.style.borderColor = '#2ecc71';
+                setTimeout(() => {
+                    this.textContent = "I'm Interested";
+                    this.style.backgroundColor = 'transparent';
+                    this.style.borderColor = 'var(--primary)';
+                }, 2000);
+            });
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Open booking modal
+        function openBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close modals when clicking close button or outside
+        const closeButtons = document.querySelectorAll('.close-btn, #cancelBooking');
+        const modals = document.querySelectorAll('.modal');
+        
+        closeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Slider functionality
+        const slider = document.getElementById('slider');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Auto slide change
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            showSlide(currentSlide);
+        }, 5000);
+        
+        // Payment method selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                paymentMethods.forEach(m => m.classList.remove('active'));
+                method.classList.add('active');
+            });
+        });
+        
+        // Form submission
+        const bookingForm = document.getElementById('bookingForm');
+        const confirmBtn = document.getElementById('confirmBooking');
+        
+        confirmBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (bookingForm.checkValidity()) {
+                alert('Booking confirmed! Thank you for choosing TourTies Adventures.');
+                document.getElementById('bookingModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                bookingForm.reset();
+            } else {
+                alert('Please fill out all required fields.');
+            }
+        });
+        
+        // Interested button functionality
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('trip-btn') && e.target.textContent === 'Interested') {
+                e.target.textContent = 'Interested!';
+                e.target.style.backgroundColor = '#2ecc71';
+                setTimeout(() => {
+                    e.target.textContent = 'Interested';
+                    e.target.style.backgroundColor = '#3498db';
+                }, 2000);
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
