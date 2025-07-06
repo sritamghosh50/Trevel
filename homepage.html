@@ -1905,47 +1905,17 @@
     </footer>
 
     <script>
-      // Mobile Menu Toggle
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
-const header = document.getElementById('header');
-
-mobileMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navLinks.classList.toggle('active');
-    mobileMenu.classList.toggle('fa-times');
-    mobileMenu.classList.toggle('fa-bars');
-    
-    // Toggle body scroll when menu is open
-    if (navLinks.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navLinks.contains(e.target) && e.target !== mobileMenu) {
-        navLinks.classList.remove('active');
-        mobileMenu.classList.remove('fa-times');
-        mobileMenu.classList.add('fa-bars');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Close menu when clicking a link (for single page navigation)
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        mobileMenu.classList.remove('fa-times');
-        mobileMenu.classList.add('fa-bars');
-        document.body.style.overflow = 'auto';
-    });
-});
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('fa-times');
+        });
         
         // Header Scroll Effect
-        // const header = document.getElementById('header');
+        const header = document.getElementById('header');
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
