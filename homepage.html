@@ -1182,6 +1182,93 @@
         .floating {
             animation: floating 6s ease-in-out infinite;
         }
+        @media (max-width: 992px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+    
+    .menu-toggle {
+        display: block;
+        order: 1;
+        margin-left: auto;
+        z-index: 1001;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        transition: all 0.5s ease;
+        padding: 80px 30px 30px;
+        z-index: 1000;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+    
+    .nav-links a {
+        color: var(--dark);
+        font-size: 1.2rem;
+        padding: 10px 0;
+        display: block;
+        width: 100%;
+    }
+    
+    .logo {
+        order: 0;
+        z-index: 1001;
+    }
+    
+    .user-profile {
+        order: 2;
+        margin-left: auto;
+        margin-right: 15px;
+        z-index: 1001;
+    }
+    
+    header.scrolled .nav-links {
+        top: 0;
+        height: 100vh;
+    }
+    
+    .profile-dropdown {
+        top: 60px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-links {
+        width: 100%;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .btn-outline {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}
         
         @keyframes floating {
             0% { transform: translateY(0px); }
@@ -1818,25 +1905,55 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenu.classList.toggle('fa-times');
-        });
+      // Mobile Menu Toggle
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+const header = document.getElementById('header');
+
+mobileMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('active');
+    mobileMenu.classList.toggle('fa-times');
+    mobileMenu.classList.toggle('fa-bars');
+    
+    // Toggle body scroll when menu is open
+    if (navLinks.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && e.target !== mobileMenu) {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('fa-times');
+        mobileMenu.classList.add('fa-bars');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close menu when clicking a link (for single page navigation)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('fa-times');
+        mobileMenu.classList.add('fa-bars');
+        document.body.style.overflow = 'auto';
+    });
+});
         
         // Header Scroll Effect
-        const header = document.getElementById('header');
+        // const header = document.getElementById('header');
         
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        // window.addEventListener('scroll', () => {
+        //     if (window.scrollY > 100) {
+        //         header.classList.add('scrolled');
+        //     } else {
+        //         header.classList.remove('scrolled');
+        //     }
+        // });
         
         // Smooth Scrolling
         const scrollDown = document.getElementById('scroll-down');
