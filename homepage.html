@@ -1947,13 +1947,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         // Header Scroll Effect
         // const header = document.getElementById('header');
         
-        // window.addEventListener('scroll', () => {
-        //     if (window.scrollY > 100) {
-        //         header.classList.add('scrolled');
-        //     } else {
-        //         header.classList.remove('scrolled');
-        //     }
-        // });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
         
         // Smooth Scrolling
         const scrollDown = document.getElementById('scroll-down');
