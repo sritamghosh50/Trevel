@@ -52,7 +52,6 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 30px;
-            
         }
         
         .btn {
@@ -207,7 +206,7 @@
             letter-spacing: 1px;
             position: relative;
             padding: 5px 0;
-             margin-top: -5px;
+            margin-top: -5px;
         }
         
         .nav-links a:after {
@@ -230,7 +229,9 @@
             cursor: pointer;
             font-size: 24px;
             color: white;
+            z-index: 1001;
         }
+
         /* Login System Styles */
         .login-container {
             position: fixed;
@@ -243,6 +244,7 @@
             justify-content: center;
             align-items: center;
             z-index: 2000;
+            display: none;
         }
 
         .login-box {
@@ -253,6 +255,7 @@
             padding: 30px;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             animation: modalFadeIn 0.3s ease;
+            position: relative;
         }
 
         @keyframes modalFadeIn {
@@ -382,21 +385,59 @@
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .login-box {
-                padding: 20px;
-            }
-            
-            .login-tab {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-            
-            .login-btn {
-                padding: 10px 20px;
-            }
+        /* User Profile Styles */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            cursor: pointer;
         }
-        
+
+        .profile-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            display: none;
+            z-index: 100;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .profile-dropdown a:hover {
+            background: #f5f5f5;
+            color: #3498db;
+        }
+
+        .profile-dropdown.active {
+            display: block;
+        }
+
+        .login-link {
+            padding: 8px 15px;
+            border-radius: 50px;
+        }
+
         /* Hero Section - Fullscreen Video Background */
         .hero {
             height: 100vh;
@@ -424,10 +465,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(15, 76, 129, 0.8), rgba(15, 76, 129, 0.5));
-            z-index: -1;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-
+            z-index: -1;
         }
         
         .hero-content {
@@ -617,8 +656,7 @@
             color: var(--gold);
         }
         
-        
-        /* New: Interactive Trip Finder */
+        /* Interactive Trip Finder */
         .trip-finder {
             padding: 80px 0;
             background: var(--light);
@@ -747,7 +785,7 @@
             display: none;
         }
         
-        /* New: Live Counter */
+        /* Live Counter */
         .counter-section {
             padding: 60px 0;
             background: linear-gradient(135deg, var(--primary), var(--accent));
@@ -885,17 +923,17 @@
             background: var(--secondary);
             transform: scale(1.3);
         }
+        
         /* CTA Section - Gradient Background */
         .cta {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), 
+                       url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
             color: white;
             text-align: center;
             position: relative;
             overflow: hidden;
             margin-bottom: 0;
-             background: linear-gradient(rgba(10, 36, 99, 0.8), rgba(10, 36, 99, 0.8)), 
-                        url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
         }
         
         .cta h2 {
@@ -922,65 +960,8 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        /* User Profile Styles */
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .profile-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-dropdown {
-            position: absolute;
-            top: 50px;
-            right: 0;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            display: none;
-            z-index: 100;
-        }
-
-        .profile-dropdown a {
-            display: block;
-            padding: 10px 15px;
-            color: #2c3e50;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .profile-dropdown a:hover {
-            background: #f5f5f5;
-            color: #3498db;
-        }
-
-        .profile-dropdown.active {
-            display: block;
-        }
-
-        .login-link {
-            /* background: rgba(255, 255, 255, 0.2); */
-            padding: 8px 15px;
-            border-radius: 50px;
-        }
-
-        .login-link:hover {
-            /* background: rgba(255, 255, 255, 0.3); */
-        }
         
-        /* New: Travel Blog Preview */
+        /* Travel Blog Preview */
         .blog-preview {
             padding: 80px 0;
             background: var(--light);
@@ -1217,13 +1198,14 @@
             .nav-links {
                 position: fixed;
                 top: 90px;
-                left: -150%;
-                width: 40%;
+                left: -100%;
+                width: 80%;
                 height: calc(100vh - 90px);
                 background: white;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 40px;
                 transition: all 0.5s ease;
             }
             
@@ -1232,7 +1214,8 @@
             }
             
             .nav-links li {
-                margin: 20px 0;
+                margin: 15px 0;
+                margin-left: 0;
             }
             
             .nav-links a {
@@ -1264,7 +1247,7 @@
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
@@ -1281,11 +1264,7 @@
             }
             
             .destination-card {
-                height: 400px;
-            }
-            
-            .instagram-post.wide {
-                grid-column: span 1;
+                height: 350px;
             }
             
             .finder-steps {
@@ -1306,23 +1285,32 @@
             .cta h2 {
                 font-size: 2.5rem;
             }
+            
+            .testimonial-content {
+                padding: 30px;
+            }
+            
+            .testimonial-quote {
+                font-size: 1.2rem;
+            }
+            
+            .author-img {
+                width: 50px;
+                height: 50px;
+            }
         }
         
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .feature-card {
                 padding: 30px 20px;
-            }
-            
-            .testimonial-content {
-                padding: 30px;
             }
             
             .counter-number {
@@ -1340,6 +1328,20 @@
             
             .finder-options {
                 grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
             }
         }
     </style>
@@ -1362,19 +1364,20 @@
                     <li><a href="#" class="login-link" id="openLogin">Login</a></li>
                 </ul>
                 <div class="user-profile" id="userProfile" style="display: none;">
-                <span id="usernameDisplay"></span>
-                <div class="profile-icon" id="profileIcon">
-                    <i class="fas fa-user"></i>
+                    <span id="usernameDisplay"></span>
+                    <div class="profile-icon" id="profileIcon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a href="#" id="profileLink">My Profile</a>
+                        <a href="#" id="myBookingsLink">My Bookings</a>
+                        <a href="#" id="logoutLink">Logout</a>
+                    </div>
                 </div>
-                <div class="profile-dropdown" id="profileDropdown">
-                    <a href="#" id="profileLink">My Profile</a>
-                    <a href="#" id="myBookingsLink">My Bookings</a>
-                    <a href="#" id="logoutLink">Logout</a>
-                </div>
-            </div>
             </nav>
         </div>
     </header>
+
     <!-- Login Modal -->
     <div class="login-container" id="loginContainer">
         <div class="login-box">
@@ -1454,8 +1457,6 @@
             </form>
         </div>
     </div>
-</body>
-</html>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1548,7 +1549,7 @@
         </div>
     </section>
 
-    <!-- New: Interactive Trip Finder -->
+    <!-- Interactive Trip Finder -->
     <section class="trip-finder">
         <div class="container">
             <div class="section-title">
@@ -1663,7 +1664,7 @@
         </div>
     </section>
 
-    <!-- New: Live Counter Section -->
+    <!-- Live Counter Section -->
     <section class="counter-section">
         <div class="container">
             <h3 class="counter-title">Join Our Global Community of Adventurers</h3>
@@ -1715,7 +1716,6 @@
                     <div class="slider-dot"></div>
                 </div>
             </div>
-            
         </div>
     </section>
 
@@ -1728,7 +1728,7 @@
         </div>
     </section>
 
-    <!-- New: Travel Blog Preview -->
+    <!-- Travel Blog Preview -->
     <section class="blog-preview">
         <div class="container">
             <div class="section-title">
@@ -1766,6 +1766,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1825,6 +1826,19 @@
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             mobileMenu.classList.toggle('fa-times');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        // Close mobile menu when clicking a link
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('fa-times');
+                    document.body.style.overflow = 'auto';
+                }
+            });
         });
         
         // Header Scroll Effect
@@ -2045,7 +2059,7 @@
             
             if (selections.type === 'trekking') {
                 if (selections.activity === 'easy') {
-                    recommendation = 'Inca Trail to Machu Picchu';
+                    recommendation = 'Inca Trail to Machu Picchu';  
                 } else if (selections.activity === 'moderate') {
                     recommendation = 'Annapurna Base Camp Trek';
                 } else {
@@ -2093,275 +2107,266 @@
         
         observer.observe(counterSection);
         
-        // Video Testimonial Play Button
-        const videoPlays = document.querySelectorAll('.video-play');
-        
-        videoPlays.forEach(play => {
-            play.addEventListener('click', function() {
-                // In a real implementation, this would open a modal with the video
-                alert('This would open a video player in a real implementation');
-            });
-        });
+        // Login System Functionality
         document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
-    const loginContainer = document.getElementById('loginContainer');
-    const openLoginBtn = document.getElementById('openLogin');
-    const closeLoginBtn = document.getElementById('closeLogin');
-    const loginTabs = document.querySelectorAll('.login-tab');
-    const loginForms = document.querySelectorAll('.login-form');
-    const showRegisterLink = document.getElementById('showRegister');
-    const showLoginLink = document.getElementById('showLogin');
-    const registerForm = document.getElementById('registerForm');
-    const userLoginForm = document.getElementById('userLoginForm');
-    const adminLoginForm = document.getElementById('adminLoginForm');
-    const userProfile = document.getElementById('userProfile');
-    const profileIcon = document.getElementById('profileIcon');
-    const profileDropdown = document.getElementById('profileDropdown');
-    const usernameDisplay = document.getElementById('usernameDisplay');
-    const logoutLink = document.getElementById('logoutLink');
-    const navLinks = document.querySelector('.nav-links');
-    
-    // Check if user is logged in from localStorage
-    let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
-    let isAdmin = localStorage.getItem('isAdmin') === 'true' || false;
-    
-    // Initialize UI based on login status
-    updateLoginStatus();
-
-    // Update UI based on login status
-    function updateLoginStatus() {
-        if (currentUser || isAdmin) {
-            // Hide login link and show user profile
-            if (openLoginBtn) openLoginBtn.style.display = 'none';
-            if (userProfile) {
-                userProfile.style.display = 'flex';
-                // Set username (or "Admin" for admin users)
-                if (usernameDisplay) {
-                    usernameDisplay.textContent = isAdmin ? 'Admin' : 
-                        currentUser ? currentUser.name.split(' ')[0] : '';
-                }
-            }
-        } else {
-            // Show login link and hide user profile
-            if (openLoginBtn) openLoginBtn.style.display = 'block';
-            if (userProfile) userProfile.style.display = 'none';
-        }
-    }
-
-    // Profile dropdown toggle
-    if (profileIcon) {
-        profileIcon.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (profileDropdown) profileDropdown.classList.toggle('active');
-        });
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', () => {
-        if (profileDropdown) profileDropdown.classList.remove('active');
-    });
-
-    // Logout functionality
-    if (logoutLink) {
-        logoutLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            currentUser = null;
-            isAdmin = false;
-            localStorage.removeItem('currentUser');
-            localStorage.removeItem('isAdmin');
-            updateLoginStatus();
-            if (profileDropdown) profileDropdown.classList.remove('active');
-            alert('You have been logged out.');
-        });
-    }
-
-    // Open login modal - Only if not logged in
-    if (openLoginBtn) {
-        openLoginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Check login status before showing
-            if (currentUser || isAdmin) {
-                return; // Don't show if already logged in
-            }
-            if (loginContainer) {
-                loginContainer.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    }
-    
-    // Switch between login tabs
-    function switchTab(tabName) {
-        if (loginTabs) {
-            loginTabs.forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.dataset.tab === tabName) {
-                    tab.classList.add('active');
-                }
-            });
-        }
-        
-        if (loginForms) {
-            loginForms.forEach(form => {
-                form.classList.remove('active');
-                if (form.id === `${tabName}LoginForm`) {
-                    form.classList.add('active');
-                }
-            });
-        }
-    }
-    
-    // Show registration form
-    function showRegisterForm() {
-        if (loginForms && registerForm) {
-            loginForms.forEach(form => form.classList.remove('active'));
-            registerForm.classList.add('active');
-        }
-    }
-    
-    // Show login form
-    function showLoginForm() {
-        if (loginForms && userLoginForm) {
-            loginForms.forEach(form => form.classList.remove('active'));
-            userLoginForm.classList.add('active');
-            switchTab('user');
-        }
-    }
-
-    // Form submissions
-    if (userLoginForm) {
-        userLoginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('userEmail').value;
-            const password = document.getElementById('userPassword').value;
+            // DOM Elements
+            const loginContainer = document.getElementById('loginContainer');
+            const openLoginBtn = document.getElementById('openLogin');
+            const closeLoginBtn = document.getElementById('closeLogin');
+            const loginTabs = document.querySelectorAll('.login-tab');
+            const loginForms = document.querySelectorAll('.login-form');
+            const showRegisterLink = document.getElementById('showRegister');
+            const showLoginLink = document.getElementById('showLogin');
+            const registerForm = document.getElementById('registerForm');
+            const userLoginForm = document.getElementById('userLoginForm');
+            const adminLoginForm = document.getElementById('adminLoginForm');
+            const userProfile = document.getElementById('userProfile');
+            const profileIcon = document.getElementById('profileIcon');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const usernameDisplay = document.getElementById('usernameDisplay');
+            const logoutLink = document.getElementById('logoutLink');
             
-            if (email && password) {
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                const user = users.find(u => u.email === email && u.password === password);
+            // Check if user is logged in from localStorage
+            let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+            let isAdmin = localStorage.getItem('isAdmin') === 'true' || false;
+            
+            // Initialize UI based on login status
+            updateLoginStatus();
+
+            // Update UI based on login status
+            function updateLoginStatus() {
+                if (currentUser || isAdmin) {
+                    // Hide login link and show user profile
+                    if (openLoginBtn) openLoginBtn.style.display = 'none';
+                    if (userProfile) {
+                        userProfile.style.display = 'flex';
+                        // Set username (or "Admin" for admin users)
+                        if (usernameDisplay) {
+                            usernameDisplay.textContent = isAdmin ? 'Admin' : 
+                                currentUser ? currentUser.name.split(' ')[0] : '';
+                        }
+                    }
+                } else {
+                    // Show login link and hide user profile
+                    if (openLoginBtn) openLoginBtn.style.display = 'block';
+                    if (userProfile) userProfile.style.display = 'none';
+                }
+            }
+
+            // Profile dropdown toggle
+            if (profileIcon) {
+                profileIcon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (profileDropdown) profileDropdown.classList.toggle('active');
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                if (profileDropdown) profileDropdown.classList.remove('active');
+            });
+
+            // Logout functionality
+            if (logoutLink) {
+                logoutLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentUser = null;
+                    isAdmin = false;
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('isAdmin');
+                    updateLoginStatus();
+                    if (profileDropdown) profileDropdown.classList.remove('active');
+                    alert('You have been logged out.');
+                });
+            }
+
+            // Open login modal - Only if not logged in
+            if (openLoginBtn) {
+                openLoginBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Check login status before showing
+                    if (currentUser || isAdmin) {
+                        return; // Don't show if already logged in
+                    }
+                    if (loginContainer) {
+                        loginContainer.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+            
+            // Switch between login tabs
+            function switchTab(tabName) {
+                if (loginTabs) {
+                    loginTabs.forEach(tab => {
+                        tab.classList.remove('active');
+                        if (tab.dataset.tab === tabName) {
+                            tab.classList.add('active');
+                        }
+                    });
+                }
                 
-                if (user) {
-                    currentUser = user;
-                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                    localStorage.setItem('isAdmin', 'false');
+                if (loginForms) {
+                    loginForms.forEach(form => {
+                        form.classList.remove('active');
+                        if (form.id === `${tabName}LoginForm`) {
+                            form.classList.add('active');
+                        }
+                    });
+                }
+            }
+            
+            // Show registration form
+            function showRegisterForm() {
+                if (loginForms && registerForm) {
+                    loginForms.forEach(form => form.classList.remove('active'));
+                    registerForm.classList.add('active');
+                }
+            }
+            
+            // Show login form
+            function showLoginForm() {
+                if (loginForms && userLoginForm) {
+                    loginForms.forEach(form => form.classList.remove('active'));
+                    userLoginForm.classList.add('active');
+                    switchTab('user');
+                }
+            }
+
+            // Form submissions
+            if (userLoginForm) {
+                userLoginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('userEmail').value;
+                    const password = document.getElementById('userPassword').value;
+                    
+                    if (email && password) {
+                        const users = JSON.parse(localStorage.getItem('users')) || [];
+                        const user = users.find(u => u.email === email && u.password === password);
+                        
+                        if (user) {
+                            currentUser = user;
+                            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            localStorage.setItem('isAdmin', 'false');
+                            if (loginContainer) {
+                                loginContainer.style.display = 'none';
+                                document.body.style.overflow = 'auto';
+                            }
+                            userLoginForm.reset();
+                            updateLoginStatus();
+                        } else {
+                            alert('Invalid email or password.');
+                        }
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+            
+            if (adminLoginForm) {
+                adminLoginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const username = document.getElementById('adminUsername').value;
+                    const password = document.getElementById('adminPassword').value;
+                    const securityKey = document.getElementById('adminKey').value;
+                    
+                    if (username === 'admin' && password === 'admin123' && securityKey === 'tourties2023') {
+                        isAdmin = true;
+                        localStorage.setItem('isAdmin', 'true');
+                        localStorage.removeItem('currentUser');
+                        if (loginContainer) {
+                            loginContainer.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                        adminLoginForm.reset();
+                        updateLoginStatus();
+                    } else {
+                        alert('Invalid admin credentials.');
+                    }
+                });
+            }
+            
+            if (registerForm) {
+                registerForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('regName').value;
+                    const email = document.getElementById('regEmail').value;
+                    const password = document.getElementById('regPassword').value;
+                    const confirmPassword = document.getElementById('regConfirmPassword').value;
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match!');
+                        return;
+                    }
+                    
+                    if (name && email && password) {
+                        const users = JSON.parse(localStorage.getItem('users')) || [];
+                        
+                        if (users.some(u => u.email === email)) {
+                            alert('Email already registered.');
+                            showLoginForm();
+                            return;
+                        }
+                        
+                        const newUser = { name, email, password };
+                        users.push(newUser);
+                        localStorage.setItem('users', JSON.stringify(users));
+                        alert('Registration successful!');
+                        showLoginForm();
+                        registerForm.reset();
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+            
+            // Close login modal
+            if (closeLoginBtn) {
+                closeLoginBtn.addEventListener('click', () => {
                     if (loginContainer) {
                         loginContainer.style.display = 'none';
                         document.body.style.overflow = 'auto';
                     }
-                    userLoginForm.reset();
-                    updateLoginStatus();
-                } else {
-                    alert('Invalid email or password.');
-                }
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
-    }
-    
-    if (adminLoginForm) {
-        adminLoginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const username = document.getElementById('adminUsername').value;
-            const password = document.getElementById('adminPassword').value;
-            const securityKey = document.getElementById('adminKey').value;
-            
-            if (username === 'admin' && password === 'admin123' && securityKey === 'tourties2023') {
-                isAdmin = true;
-                localStorage.setItem('isAdmin', 'true');
-                localStorage.removeItem('currentUser');
-                if (loginContainer) {
-                    loginContainer.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-                adminLoginForm.reset();
-                updateLoginStatus();
-            } else {
-                alert('Invalid admin credentials.');
-            }
-        });
-    }
-    
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('regName').value;
-            const email = document.getElementById('regEmail').value;
-            const password = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('regConfirmPassword').value;
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-            
-            if (name && email && password) {
-                const users = JSON.parse(localStorage.getItem('users')) || [];
-                
-                if (users.some(u => u.email === email)) {
-                    alert('Email already registered.');
+                    switchTab('user');
                     showLoginForm();
-                    return;
-                }
-                
-                const newUser = { name, email, password };
-                users.push(newUser);
-                localStorage.setItem('users', JSON.stringify(users));
-                alert('Registration successful!');
-                showLoginForm();
-                registerForm.reset();
-            } else {
-                alert('Please fill in all fields.');
+                });
             }
-        });
-    }
-    
-    // Close login modal
-    if (closeLoginBtn) {
-        closeLoginBtn.addEventListener('click', () => {
+            
+            // Close when clicking outside
             if (loginContainer) {
-                loginContainer.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                loginContainer.addEventListener('click', (e) => {
+                    if (e.target === loginContainer) {
+                        loginContainer.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                        switchTab('user');
+                        showLoginForm();
+                    }
+                });
             }
-            switchTab('user');
-            showLoginForm();
-        });
-    }
-    
-    // Close when clicking outside
-    if (loginContainer) {
-        loginContainer.addEventListener('click', (e) => {
-            if (e.target === loginContainer) {
-                loginContainer.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                switchTab('user');
-                showLoginForm();
-            }
-        });
-    }
 
-    // Initialize tab switching
-    if (loginTabs) {
-        loginTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                switchTab(tab.dataset.tab);
-            });
+            // Initialize tab switching
+            if (loginTabs) {
+                loginTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        switchTab(tab.dataset.tab);
+                    });
+                });
+            }
+            
+            if (showRegisterLink) {
+                showRegisterLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showRegisterForm();
+                });
+            }
+            
+            if (showLoginLink) {
+                showLoginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showLoginForm();
+                });
+            }
         });
-    }
-    
-    if (showRegisterLink) {
-        showRegisterLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            showRegisterForm();
-        });
-    }
-    
-    if (showLoginLink) {
-        showLoginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            showLoginForm();
-        });
-    }
-});
     </script>
 </body>
 </html>
